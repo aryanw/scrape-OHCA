@@ -87,8 +87,8 @@ def scrapeFacility(URL,headers):
 
 
 URL = "https://www.ohca.com/facility-finder/"
+UA = "" # find User Agent from inspect page
 
-UA = ""
 headers = {'User-Agent': UA}
 result = requests.get(URL, headers=headers)
 
