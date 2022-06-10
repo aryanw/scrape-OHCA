@@ -30,6 +30,11 @@ def scrapeFacility(URL,headers):
         dataentry.append(results.find("h1").text.strip())
     else:
         dataentry.append(None)
+    # facility_type (can be assigned multiple facilities)
+    if soup.find(class_="ill_directory_category_facility-type"):
+        dataentry.append(soup.find(class_="ill_directory_category_facility-type").a.text)
+    else:
+        dataentry.append(None)
     #directory_email 
     if soup.find(class_="ill_directory_email"):
         dataentry.append(soup.find(class_="ill_directory_email").text)
@@ -53,11 +58,6 @@ def scrapeFacility(URL,headers):
     #directory_website
     if soup.find(class_="ill_directory_web_url"):
         dataentry.append(soup.find(class_="ill_directory_web_url").text)
-    else:
-        dataentry.append(None)
-    # facility_type (can be assigned multiple facilities)
-    if soup.find(class_="ill_directory_category_facility-type"):
-        dataentry.append(soup.find(class_="ill_directory_category_facility-type").a.text)
     else:
         dataentry.append(None)
     # capacity 
